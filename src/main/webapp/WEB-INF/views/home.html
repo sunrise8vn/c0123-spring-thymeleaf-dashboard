@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Victory Admin</title>
+    <th:block th:replace="/layout/head" />
+</head>
+<body>
+<div class="container-scroller">
+    <th:block th:replace="/layout/navbar" />
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+
+            <th:block th:replace="/layout/right-sidebar" />
+
+            <th:block th:replace="/layout/left-sidebar" />
+
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <h4 class="page-title">Home page</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page Content-->
+                <div class="row">
+
+                </div>
+
+                <th:block th:replace="/layout/footer" />
+
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<th:block th:replace="/layout/script" />
+</body>
+
+</html>

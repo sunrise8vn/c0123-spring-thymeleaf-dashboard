@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Victory Admin</title>
+    <th:block th:replace="/layout/head"/>
+</head>
+<body>
+<div class="container-scroller">
+    <th:block th:replace="/layout/navbar"/>
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+
+            <th:block th:replace="/layout/right-sidebar"/>
+
+            <th:block th:replace="/layout/left-sidebar"/>
+
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <h4 class="page-title">List of products</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page Content-->
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Summary</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <th:block th:each="item : ${products}">
+                                                <tr>
+                                                    <td th:text="${item.id}"></td>
+                                                    <td th:text="${item.title}"></td>
+                                                    <td class="text-danger" th:text="${item.price}"></td>
+                                                    <td th:text="${item.quantity}"></td>
+                                                    <td th:text="${item.summary}"></td>
+                                                    <td><label class="badge badge-danger">Pending</label></td>
+                                                </tr>
+                                            </th:block>
+<!--                                            <tr>-->
+<!--                                                <td>1</td>-->
+<!--                                                <td>Iphone XX</td>-->
+<!--                                                <td class="text-danger">$4.000</td>-->
+<!--                                                <td>102</td>-->
+<!--                                                <td>...</td>-->
+<!--                                                <td><label class="badge badge-danger">Pending</label></td>-->
+<!--                                            </tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <th:block th:replace="/layout/footer"/>
+
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<th:block th:replace="/layout/script"/>
+</body>
+
+</html>
