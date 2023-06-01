@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>List of customers</title>
+    <th:block th:replace="/layout/head"/>
+</head>
+<body>
+<div class="container-scroller">
+    <th:block th:replace="/layout/navbar"/>
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+
+            <th:block th:replace="/layout/right-sidebar"/>
+
+            <th:block th:replace="/layout/left-sidebar"/>
+
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <h4 class="page-title">List of customers</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page Content-->
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Balance</th>
+                                            <th>Address</th>
+                                            <th colspan="2">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <th:block th:each="item : ${customers}">
+                                            <tr>
+                                                <td th:text="${item.id}"></td>
+                                                <td th:text="${item.fullName}"></td>
+                                                <td th:text="${item.email}"></td>
+                                                <td th:text="${item.phone}"></td>
+                                                <td th:text="${item.balance}"></td>
+                                                <td th:text="${item.address}"></td>
+                                                <td>
+                                                    <a href="#">
+                                                        <button class="btn btn-secondary">Edit</button>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a th:href="@{/customers/deposit/__${item.id}__}">
+                                                        <button class="btn btn-outline-success">Deposit</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </th:block>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <th:block th:replace="/layout/footer"/>
+
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<th:block th:replace="/layout/script"/>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Deposit</title>
+    <th:block th:replace="/layout/head"/>
+</head>
+<body>
+<div class="container-scroller">
+    <th:block th:replace="/layout/navbar"/>
+
+    <div class="container-fluid page-body-wrapper">
+        <div class="row row-offcanvas row-offcanvas-right">
+
+            <th:block th:replace="/layout/right-sidebar"/>
+
+            <th:block th:replace="/layout/left-sidebar"/>
+
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <h4 class="page-title">Deposit</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page Content-->
+
+                <th:block th:if="${error == true}">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="page-title" th:text="${message}"></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+
+                <th:block th:if="${error != true}">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form class="forms-sample" th:object="${customer}" method="post">
+                                        <div class="row">
+                                            <div class="form-group col-4">
+                                                <label for="fullName">FullName</label>
+                                                <input type="text" class="form-control" id="fullName" th:field="*{fullName}" placeholder="Enter full name" readonly>
+                                            </div>
+                                            <div class="form-group col-4">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Enter email" readonly>
+                                            </div>
+                                            <div class="form-group col-4">
+                                                <label for="phone">Phone</label>
+                                                <input type="tel" class="form-control" id="phone" th:field="*{phone}" placeholder="Enter phone" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-6">
+                                                <label for="balance">Balance</label>
+                                                <input type="text" class="form-control" id="balance" th:field="*{balance}" placeholder="Enter balance" readonly>
+                                            </div>
+                                            <div class="form-group col-6" th:object="${deposit}">
+                                                <label for="transactionAmount">Transaction Amount</label>
+                                                <input type="text" class="form-control" id="transactionAmount" th:field="*{transactionAmount}" placeholder="Enter transaction amount">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <button type="submit" class="btn btn-outline-success mr-2">Deposit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+
+
+
+                <th:block th:replace="/layout/footer"/>
+
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- row-offcanvas ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<th:block th:replace="/layout/script"/>
+</body>
+
+</html>
