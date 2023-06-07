@@ -139,6 +139,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasenames("validation-message");
+        messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
 

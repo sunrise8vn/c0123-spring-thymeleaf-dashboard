@@ -28,6 +28,11 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
+    public Boolean existsByEmailAndIdNot(String email, Long id) {
+        return customerRepository.existsByEmailAndIdNot(email, id);
+    }
+
+    @Override
     public Customer save(Customer customer) {
         return customerRepository.save(customer);
     }
